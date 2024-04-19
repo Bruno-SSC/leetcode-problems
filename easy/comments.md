@@ -1,0 +1,10 @@
+Red (!)
+Blue (?)
+Green (\*)
+Yellow (^)
+Pink (&)
+Purple (~)
+Mustard (todo)
+Grey (//)
+
+![alt text](image.png)
