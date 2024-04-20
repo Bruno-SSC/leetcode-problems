@@ -1,7 +1,8 @@
-console.time("myCode");
-
 var twoSum = function (nums, target) {
   let res = [];
+
+
+  // ? would it be done without nested iterators?
 
   for (let c = 0; c < nums.length; c++) {
     let n1 = nums[c];
@@ -21,5 +22,3 @@ console.log(twoSum([2, 7, 11, 15], 9));
 console.log(twoSum([3, 2, 4], 6));
 console.log(twoSum([3, 3], 6));
 console.log(twoSum([2, 5, 5, 11], 10));
-
-console.timeEnd("myCode");

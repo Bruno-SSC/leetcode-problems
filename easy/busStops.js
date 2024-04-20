@@ -1,54 +1,27 @@
 var distanceBetweenBusStops = function (distance, start, destination) {
+  if (start < destination) [start, destination] = [destination, start];
+
   let n = distance.length;
-  let clockwise = 0,
-    counterClock = 0;
+  let currStop = start;
+  let traveledClockWise = 0;
+  let traveledCounter = 0;
 
-  let path = [];
-  let fill = 0;
-  for (let c = 0; c < n * 2; c++) {
-    if (fill > n - 1) fill = 0;
-    path.push(fill);
-    fill++;
+  // ? Would it be done with for/in iterators?
+
+  while (currStop - n != destination) {
+    if (currStop >= n) traveledClockWise += distance[currStop - n];
+    else traveledClockWise += distance[currStop];
+    currStop++;
   }
 
-  let countingClock = false;
-  let countingCounter = false;
+  currStop = start;
 
-  for (let i = 0; i < path.length; i++) {
-    let val = path[i];
-
-    if (val === start) {
-      countingClock = true;
-    }
-
-    if (countingClock && val === destination) {
-      countingClock = false;
-      break;
-    }
-    if (countingClock) clockwise += distance[val];
+  while (currStop != destination) {
+    traveledCounter += distance[currStop - 1];
+    currStop--;
   }
-
-  for (let i = 0; i < path.length; i++) {
-    let val = path[i];
-    if (val === destination) {
-      countingCounter = true;
-    }
-
-    if (countingCounter && val === start) {
-      countingClock = false;
-      break;
-    }
-    if (countingCounter) counterClock += distance[val];
-  }
-
-  let shortest = clockwise > counterClock ? counterClock : clockwise;
-
-  return shortest;
+  return traveledClockWise > traveledCounter ? traveledCounter : traveledClockWise;
 };
 
-console.log(distanceBetweenBusStops([7, 10, 1, 12, 11, 14, 5, 0], 7, 2));
-console.log(distanceBetweenBusStops([7, 10, 1, 12, 11, 14, 5, 0], 2, 7));
-
-console.log(distanceBetweenBusStops([1, 2, 3, 4], 0, 1));
-console.log(distanceBetweenBusStops([1, 2, 3, 4], 0, 2));
-console.log(distanceBetweenBusStops([1, 2, 3, 4], 0, 3));
+distanceBetweenBusStops([7, 10, 1, 12, 11, 14, 5, 0], 7, 2);
+distanceBetweenBusStops([1, 2, 3, 4], 0, 3);
