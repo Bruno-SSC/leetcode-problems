@@ -1,24 +1,13 @@
-/* 
-
-
-
-
-TODO: Given a positive integer num, return true if num is a perfect square or false otherwise.
-
-? A perfect square is an integer that is the square of an integer. 
-In other words, it is the product of some integer with itself.
-
-* You must not use any built-in library function, such as sqrt.
-
-
-*/
-
 var isPerfectSquare = function (num) {
-  return false;
+  return !String(num ** 0.5).includes(".");
 };
 
-isPerfectSquare(16);
+console.log(isPerfectSquare(195));
+
 /* 
-Output: true
-Explanation: We return true because 4 * 4 = 16 and 4 is an integer.
- */
+String() without the "new" transforms the param into a primitive string
+** is the "power of" operator
+raising a number to a fraction works like a root, 1/2 is the square root, 1/3 would be the cube root of a number
+includes(".") checks if the square root of the number has a ".", which would mean it's square root is a float
+? https://sciencing.com/happens-raise-number-fraction-8535078.html
+*/
