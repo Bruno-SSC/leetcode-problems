@@ -1,7 +1,6 @@
 var twoSum = function (nums, target) {
   let res = [];
 
-
   // ? would it be done without nested iterators?
 
   for (let c = 0; c < nums.length; c++) {
